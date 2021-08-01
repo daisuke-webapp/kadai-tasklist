@@ -7,7 +7,7 @@ class TasksController < ApplicationController
     end
     
     def show
-        @task = current_user.tasks.find_by(params[:id])
+        @task = current_user.tasks.find_by(id: params[:id])
     end
     
     def new
@@ -27,11 +27,11 @@ class TasksController < ApplicationController
     end
     
     def edit
-        @task = current_user.tasks.find_by(params[:id])
+        @task = current_user.tasks.find_by(id: params[:id])
     end
     
     def update
-        @task = Task.find_by(params[:id])
+        @task = Task.find(params[:id])
         
         if @task.update(task_params)
             flash[:success] = 'Task は正常に更新されました'
